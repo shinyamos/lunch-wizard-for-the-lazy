@@ -10,8 +10,7 @@ const config = require('./config');
 const configOptions = config.configOptions;
 config.setInitConfiguration(argv, process.env);
 
-//TODO: Move to serach module,
-//TODO: Change behavior to listen for update event on configOptions
+//TODO: Move to search module,
 //get OAUTH2 bearer token from Yelp Fusion API
 search.updateAuth();
 
