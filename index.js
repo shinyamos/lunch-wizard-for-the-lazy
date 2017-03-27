@@ -1,10 +1,12 @@
 'use strict';
 const logger = require('winston');
 const argv = require('yargs').argv;
+var exphbs = require('express-handlebars');
 
 const server = require('./server');
 const search = require('./search');
 const config = require('./config');
+
 
 //TODO: replace this whole noise with nconf and dotenv
 const configOptions = config.configOptions;
@@ -15,8 +17,18 @@ config.setInitConfiguration(argv, process.env);
 search.updateAuth();
 
 const app = server.app;
-//TODO: Add logging for all requests here
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
+app.set('view engine', 'handlebars');
+
+// Landing page
+app.get('/', function (req, res, next) {
+  res.render('home', {
+    showTitle: true
+  });
+});
+
+//TODO: Add logging for all requests here
 logger.info("started up, woot!");
 
 app.listen(configOptions.port.value, configOptions.host.value, function () {
