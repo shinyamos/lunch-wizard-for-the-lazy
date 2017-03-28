@@ -1,1 +1,27 @@
 <h1>Tell me what you want from lunch!</h1>
+<form action="/search" method="post">
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name">
+    </div>
+    <div>
+        <label for="location">Location(Zip Code):</label>
+        <input type="text" id="location" name="user_location">
+    </div>
+    <div>
+        <label for="radius">radius(in meters):</label>
+        <input type="text" id="radius" name="user_radius">
+    </div>
+    <div>
+        <label for="categories">Categories(comma delimited):</label>
+        <input type="text" id="categories" name="user_categories">
+    </div>
+    <div>
+        <label for="price">How much do you want to pay?:</label>
+        <input type="range"  min="1" max="4" value="1" steps="1" />
+    </div>
+    <div class="button">
+        <button type="submit">Choose My lunch spot!</button>
+    </div>
+</form>
