@@ -10,8 +10,12 @@ const request = require('request');
 const YELP_SEARCH_URL = 'https://api.yelp.com/v3/businesses/search';
 
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
   logger.info('Someone is asking about lunch options!');
+
+  const params = req.params;
+  logger.info(`Params sent for user are ${JSON.stringify(req.body)}`);
+
 
   //TODO: Remove this hack, updated authBearerToken when configuration data is updated
   let searchOptions = getSearchOptions();

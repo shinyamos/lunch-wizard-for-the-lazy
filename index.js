@@ -1,6 +1,7 @@
 'use strict';
 const logger = require('winston');
 const argv = require('yargs').argv;
+
 var exphbs = require('express-handlebars');
 
 const server = require('./server');
@@ -17,8 +18,9 @@ config.setInitConfiguration(argv, process.env);
 search.updateAuth();
 
 const app = server.app;
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
+//TODO: move to server module
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 // Landing page

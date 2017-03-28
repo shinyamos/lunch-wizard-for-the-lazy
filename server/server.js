@@ -7,7 +7,7 @@ const search = require('../search/search.js');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser());
 app.use((request, response, next) => {
   logger.info(request.headers);
   next()
