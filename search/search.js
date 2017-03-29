@@ -16,7 +16,6 @@ router.post('/', (req, res) => {
   const params = req.params;
   logger.info(`Params sent for user are ${JSON.stringify(req.body)}`);
 
-
   //TODO: Remove this hack, updated authBearerToken when configuration data is updated
   let searchOptions = getSearchOptions();
   request(searchOptions, (error, yelpResponse, body) => {
@@ -30,8 +29,10 @@ router.post('/', (req, res) => {
 
     //TODO: Filter response, based on user preferences, external conditions
     // in different module
-    logger.info(`Lunch data came back! ${JSON.stringify(responseObj)}`);
-    res.json(responseObj);
+
+    // logger.info(`Lunch data came back! ${JSON.stringify(responseObj)}`);
+    const firstBusiness = responseObj.businesses[0];
+    res.json(firstBusiness);
   });
 });
 

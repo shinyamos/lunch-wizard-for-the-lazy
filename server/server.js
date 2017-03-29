@@ -7,7 +7,7 @@ const search = require('../search/search.js');
 
 const app = express();
 
-app.use(bodyParser());
+app.use(bodyParser.urlencoded());
 app.use((request, response, next) => {
   logger.info(request.headers);
   next()
